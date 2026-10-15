@@ -5,4 +5,4 @@ select
 from 
     Courses 
 group by class
-having count(*)>4;
+having count(*)>=5;
