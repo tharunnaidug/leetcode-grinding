@@ -4,18 +4,16 @@ public:
         
         int n=nums.size();
         vector<int> ans(n);
-        vector<int> pre(n,1),post(n,1);
-        
-        for(int i=1; i<n; i++){
-           pre[i]=pre[i-1]*nums[i-1];
-        }
-
-        for(int i=n-2; i>=0; i--){
-            post[i]=post[i+1]*nums[i+1];
-        }
+        int pre=1,post=1;
 
         for(int i=0; i<n; i++){
-            ans[i]=pre[i]*post[i];
+           ans[i]=pre;
+           pre*=nums[i];
+        }
+
+        for(int i=n-1; i>=0; i--){
+            ans[i]*=post;
+            post*=nums[i];
         }
 
         return ans;
